@@ -1,0 +1,219 @@
+<div class="container mt-2" style='margin-right: 100px;'>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <div class="card p-4 mt-3">
+                <div class="d-flex justify-content-center px-5">
+                    <div class="display-4">Candidate Database</div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <br>
+  
+  
+  <div class = "container" style='margin-right: 100px;'>
+      <div class = "row col-lg-12 col-sm-12">
+          <table class = "table table-striped">
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Firstname</th>
+                      <th>Lastname</th>
+                      <th>Gender</th>
+                      <th>Age</th>
+                      <th>Email</th>
+                      <th>Contact</th>
+                      <th>Address</th>
+                      <!-- <th>Year</th>
+                      <th>Institution</th>
+                      <th>Skillset</th>
+                      <th>Location</th> -->
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor = "let one of user">
+                      <td>{{one.id}}</td>
+                      <td>{{one.fname}}</td>
+                      <td>{{one.lname}}</td>
+                      <td>{{one.gender}}</td>
+                      <td>{{one.age}}</td>
+                      <td>{{one.email}}</td>
+                      <td>{{one.contact}}</td>
+                      <td>{{one.address}}</td>
+                      <!-- <td>{{one.year}}</td>
+                      <td>{{one.institution}}</td>
+                      <td>{{one.skillset}}</td>
+                      <td>{{one.location}}</td> -->
+                      <td>
+                        <br>
+                          <a class="search-icon"  data-toggle="modal" data-target=".bd-view-modal-lg" (click)="editById(one.id)"> <i class="fa fa-eye" style="font-size: 1.5em;" aria-hidden="true"></i></a>
+                      
+                          <div class="modal fade bd-view-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">View Record</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    
+                                      <div class="container">
+                                          <div class="view-main-body">
+                                              <div class="col-md-12">
+                                                  <div class="card mb-3">
+                                                    <div class="card-body">
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Full Name</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.fname}} {{one.lname}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Age</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.age}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Gender</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.gender}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Email</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.email}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Contact</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.contact}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Address</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.address}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Role</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.role}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Feedback</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.feedback}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Location</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.location}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Year</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.date}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">Institute</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.institution}}
+                                                        </div>
+                                                      </div>
+                                                      <hr>
+                                                      <div class="row">
+                                                        <div class="col-sm-3">
+                                                          <h6 class="mb-0">skillset</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                          {{one.skillset}}
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+                                  </div>
+                                </div>
+                              </div>
+                            </div>  
+  
+                      </td>
+                      <td>
+                        <br>
+                          <a class="search-icon" data-toggle="modal" data-target="#deleteModal"> <i class="fas fa-trash-alt" style="font-size: 1.5em;"></i> </a>
+                          <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      Are you sure you want to delete this record?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger" (click) = "removeUser(one.id)" data-dismiss="modal">Delete <i class="fas fa-trash-alt" style="font-size: 1em;"></i></button>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>  
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+
+ 

@@ -1,0 +1,70 @@
+<div class="container mt-2">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <div class="card p-4 mt-3">
+                <div class="d-flex justify-content-center px-5">
+                    <div class="display-4">Trends</div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+<div class="container mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <div class="card p-4 mt-3">
+                <nav class="navbar navbar-expand-lg navbar-light bg-grey">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(1)">Skillset Among Candidates</button>&nbsp;
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(2)">Candidates joined each year</button>&nbsp;
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(3)">Joining Location of Grads</button>&nbsp;
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(4)">Feedback Vs Candidate</button>&nbsp;
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(5)">Role Diversity</button>
+                      </ul>
+                    </div>
+                  </nav>
+
+                <div *ngIf="temp==1">
+                  <ngx-charts-bar-vertical 
+                  [view]="[1000,400]"
+                  [results]="data"
+                  [xAxisLabel]="'Skillset'"
+                  [legendTitle]="'Skillset Variation Among Candidates'"
+                  [yAxisLabel]="'Count'"
+                  [legend]="true"
+                  [showXAxisLabel]="true"
+                  [showYAxisLabel]="true"
+                  [xAxis]="true"
+                  [yAxis]="true"
+                  [gradient]="true">
+                  </ngx-charts-bar-vertical>
+                </div>
+
+                <div *ngIf="temp==5">
+                  <ngx-charts-bar-vertical 
+                  [view]="[1000,400]"
+                  [results]="data"
+                  [xAxisLabel]="'Skillset'"
+                  [legendTitle]="'Skillset Variation Among Candidates'"
+                  [yAxisLabel]="'Count'"
+                  [legend]="true"
+                  [showXAxisLabel]="true"
+                  [showYAxisLabel]="true"
+                  [xAxis]="true"
+                  [yAxis]="true"
+                  [gradient]="true">
+                  </ngx-charts-bar-vertical>
+                </div>
+
+
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+  </div>

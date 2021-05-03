@@ -1,0 +1,347 @@
+<div class="container mt-2">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <div class="card p-4 mt-3">
+              <div class="d-flex justify-content-center px-5">
+                <div class="display-4">Search Database</div>
+            </div>
+                <div class="d-flex justify-content-center px-5">
+                    <div class="search"> <input type="text" class="search-input" placeholder="Search..." [(ngModel)]="searchVar"> &nbsp; <a class="search-icon" (click)="searchByFirstname()"> <i class="fa fa-search" style="font-size: 1.5em;"></i> </a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class = "container">
+    <div class = "row col-md-12 col-sm-12">
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                    <!-- <th>Year</th>
+                    <th>Institution</th>
+                    <th>Skillset</th>
+                    <th>Location</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let one of user">
+                    <td>{{this.one.id}}</td>
+                    <td>{{this.one.fname}}</td>
+                    <td>{{this.one.lname}}</td>
+                    <td>{{this.one.gender}}</td>
+                    <td>{{this.one.age}}</td>
+                    <td>{{this.one.email}}</td>
+                    <td>{{this.one.contact}}</td>
+                    <td>{{this.one.address}}</td>
+                    <!-- <td>{{one.year}}</td>
+                    <td>{{one.institution}}</td>
+                    <td>{{one.skillset}}</td>
+                    <td>{{one.location}}</td> -->
+                    <td>
+                        <br>
+                        <a class="search-icon"  data-toggle="modal" data-target=".bd-view-modal-lg" (click)="viewById(this.one.id)"> <i class="fa fa-eye" aria-hidden="true" style="font-size: 1.5em;"></i> </a>
+                    </td>
+                    <td>
+                        <br>
+                        <a class="search-icon"  data-toggle="modal" data-target=".bd-example-modal-lg" (click)="editById(one.id)"> <i class="fas fa-edit" style="font-size: 1.5em;"></i> </a>
+                        
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Edit Record</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12">
+                                                <div style="text-align: center">
+                                                </div>
+                                                <form #userForm="ngForm">
+                                                    <fieldset>
+
+                                                      <div class="form-group">
+                                                        <label for="firstname">First name</label>
+                                                        <input class="form-control" type="text" required #fname="ngModel" [class.is-invalid]="fname.invalid && fname.touched" name="fname" id="firstname" [ngModel]="obj?.fname" (ngModelChange)="obj.fname = $event" maxlength="28" placeholder="Enter First name" />
+                                                        <small class="text-danger" [class.d-none]="fname.valid || fname.untouched">First name is required</small>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="lastname">Last name</label>
+                                                        <input class="form-control" type="text" required #lname="ngModel" [class.is-invalid]="lname.invalid && lname.touched" name="lname" id="lastname" [ngModel]="obj?.lname" (ngModelChange)="obj.lname = $event" maxlength="28" placeholder="Enter your Last name" />
+                                                        <small class="text-danger" [class.d-none]="lname.valid || lname.untouched">Last name is required</small>
+                                                    </div>
+                                
+                                                    <div class="form-group">
+                                                        <label for="gender">Gender</label>
+                                                        <select class="custom-select" required #gender="ngModel" [class.is-invalid]="gender.invalid && gender.touched" name="gender" id="gender" [ngModel]="obj?.gender" (ngModelChange)="obj.gender = $event">
+                                                            <option value="">I am...</option>
+                                                            <option>Male</option>
+                                                            <option>Female</option>
+                                                            <option>Other</option>
+                                                        </select>
+                                                        <small class="text-danger" [class.d-none]="gender.valid || gender.untouched">Choose gender of candidate</small>
+                                                    </div>
+
+                                                    
+                                                        <div class="form-group">
+                                                          <label for="age">Age</label>
+                                                          <input class="form-control" type="number" required #age="ngModel" pattern="^(?:1[8-9]|[2-5][0-9]|60)$" [class.is-invalid]="age.invalid && age.touched" name="age" id="age" [ngModel]="obj?.age" (ngModelChange)="obj.age = $event" placeholder="Enter your Age" />
+                                                          <small class="text-danger" [class.d-none]="age.valid || age.untouched">Enter a valid age (18-60) </small>
+                                                        </div>
+                                  
+                                                      <div class="form-group">
+                                                          <label for="email">Email</label>
+                                                          <input class="form-control" type="email" required #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="email.invalid && email.touched" name="email" id="email" [ngModel]="obj?.email" (ngModelChange)="obj.email = $event" placeholder="Enter your Email" />
+                                                          <small class="text-danger" [class.d-none]="email.valid || email.untouched">Enter a valid email id</small>
+                                                      </div>
+                                  
+                                                      <div class="form-group">
+                                                          <label for="contact">Contact</label>
+                                                          <input class="form-control" type="tel" required #contact="ngModel" pattern="\d{10}$" [class.is-invalid]="contact.invalid && contact.touched" maxlength="10" name="contact" id="contact" [ngModel]="obj?.contact" (ngModelChange)="obj.contact = $event" placeholder="Enter your Contact" />
+                                                          <div *ngIf="contact.errors && (contact.invalid && contact.touched)">
+                                                              <small class="text-danger" [class.d-none]="contact.errors.required">Contact number is mandatory.</small>
+                                                              <small class="text-danger" [class.d-none]="contact.errors.pattern">Contact number must have 10 digits only.</small>
+                                                          </div>
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label for="address">Address</label>
+                                                          <input class="form-control" type="text" required #address="ngModel" [class.is-invalid]="address.invalid && address.touched" name="address" id="address" [ngModel]="obj?.address" (ngModelChange)="obj.address = $event" placeholder="Enter your Address" />
+                                                          <small class="text-danger" [class.d-none]="address.valid || address.untouched">Address field is mandatory</small>
+                                                      </div>
+                                                      
+                                                      <div class="form-group">
+                                                        <label for="role">Role</label>
+                                                        <input class="form-control" type="text" required #role="ngModel" [class.is-invalid]="role.invalid && role.touched" name="role" id="role" [ngModel]="obj?.role" (ngModelChange)="obj.role = $event" placeholder="Enter role" />
+                                                        <small class="text-danger" [class.d-none]="role.valid || role.untouched">Enter Candidate Role</small>
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label for="date">Date of Joining</label>
+                                                        <input class="form-control" type="date" value="DD-MM-YYYY" name="date" id="date" required #date="ngModel" [class.is-invalid]="date.invalid && date.touched" [ngModel]="obj?.date" (ngModelChange)="obj.date = $event" placeholder="Select date of joining">
+                                                        <small class="text-danger" [class.d-none]="date.valid || date.untouched">Enter date of joining</small>
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label for="feedback">Feedback</label>
+                                                        <input class="form-control" type="text" required #feedback="ngModel" [class.is-invalid]="feedback.invalid && feedback.touched" name="feedback" id="feedback" [ngModel]="obj?.feedback" (ngModelChange)="obj.feedback = $event" placeholder="Enter feedback" />
+                                                        <small class="text-danger" [class.d-none]="feedback.valid || feedback.untouched">Enter Feedback</small>
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label for="institution">Institution </label>
+                                                          <input class="form-control" type="text" required #inst="ngModel" [class.is-invalid]="inst.invalid && inst.touched" name="institution" id="institution" [ngModel]="obj?.institution" (ngModelChange)="obj.institution = $event" placeholder="Name of Institution" />
+                                                          <small class="text-danger" [class.d-none]="inst.valid || inst.untouched">Institution name is required</small>
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label for="skillset">Choose your skillset (Use ',' as a delimeter) </label>
+                                                          <input class="form-control" type="text" required #skill="ngModel" [class.is-invalid]="skill.invalid && skill.touched" name="skillset" id="skillset" [ngModel]="obj?.skillset" (ngModelChange)="obj.skillset = $event" placeholder="Enter your Skillset" />
+                                                          <small class="text-danger" [class.d-none]="skill.valid || skill.untouched">Skillset is required OR input NA</small>
+                                                      </div>
+                                                        <div class="form-group">
+                                                          <label for="location">Location</label>
+                                                          <select class="custom-select" required #location="ngModel" [class.is-invalid]="location.invalid && location.touched" name="location" id="location" [ngModel]="obj?.location" (ngModelChange)="obj.location = $event">
+                                                              <option value="">Choose</option>
+                                                              <option>Gurgaon</option>
+                                                              <option>New Delhi</option>
+                                                              <option>Chennai</option>
+                                                              <option>Mumbai</option>
+                                                              <option>Bangalore</option>
+                                                              <option>Hyderabad</option>
+                                                          </select>
+                                                          <small class="text-danger" [class.d-none]="location.valid || location.untouched">Choose location of candidate</small>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                        
+                        
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+                                  <button type="button" [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit" name="edit" value="edit" (click)="editNow(obj)" data-dismiss="modal">Edit <i class="fas fa-edit" style="font-size: 1em;"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>                        
+                    </td>
+                    <td>
+                        <br>
+                        <a class="search-icon" data-toggle="modal" data-target="#deleteModal"> <i class="fas fa-trash-alt" style="font-size: 1.5em;"></i> </a>
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this record?
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-danger" (click) = "removeUser(one.id)" data-dismiss="modal">Delete  <i class="fas fa-trash-alt" style="font-size: 1em;"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
+
+
+<!-- View Modal -->
+
+<div class="modal fade bd-view-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">View Record</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+          <div class="container">
+              <div class="view-main-body">
+                  <div class="col-md-12">
+                      <div class="card mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.fname}} {{this.two.lname}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Age</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.age}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Gender</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.gender}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.email}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Contact</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.contact}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.address}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Role</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{this.two.role}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Feedback</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{this.two.feedback}}
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Location</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.location}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Year</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.date}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Institute</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.institution}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Skillset</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{this.two.skillset}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+      </div>
+    </div>
+  </div>
+</div>   
