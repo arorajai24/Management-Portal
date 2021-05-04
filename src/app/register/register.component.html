@@ -74,7 +74,14 @@
                       </div>
                     <div class="form-group">
                         <label for="feedback">Feedback</label>
-                        <input class="form-control" type="text" required #feedback="ngModel" [class.is-invalid]="feedback.invalid && feedback.touched" name="feedback" id="feedback" [(ngModel)]="user.feedback" placeholder="Enter feedback" />
+                        <select class="custom-select" required #feedback="ngModel" [class.is-invalid]="feedback.invalid && feedback.touched" name="feedback" id="feedback" [(ngModel)]="user.feedback">
+                            <option value="">Select</option>
+                            <option>Worse</option>
+                            <option>Poor</option>
+                            <option>Average</option>
+                            <option>Good</option>
+                            <option>Excellent</option>
+                        </select>
                         <small class="text-danger" [class.d-none]="feedback.valid || feedback.untouched">Enter Feedback</small>
                     </div>
                     <div class="form-group">

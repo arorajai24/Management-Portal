@@ -24,11 +24,11 @@ export class TrendserviceService {
     }
     else if(id==4)
     {
-      return this.http.get("http://localhost:8080/gradroles-trend");
+      return this.http.get("http://localhost:8080/gradfeedback-trend");
     }
     else if(id==5)
     {
-      return this.http.get("http://localhost:8080/gradfeedback-trend");
+      return this.http.get("http://localhost:8080/gradroles-trend");
     }
     
   }
