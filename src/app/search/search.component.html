@@ -12,11 +12,13 @@
         </div>
     </div>
 </div>
+
 <br>
 
+
 <div class = "container">
-    <div class = "row col-md-12 col-sm-12">
-        <table class = "table table-striped">
+  <div class = "row col-lg-12 col-sm-12">
+      <table class = "table table-striped">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -34,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor = "let one of user">
+                <tr [(ngModel)] = "user" *ngFor = "let one of user">
                     <td>{{this.one.id}}</td>
                     <td>{{this.one.fname}}</td>
                     <td>{{this.one.lname}}</td>
@@ -49,7 +51,7 @@
                     <td>{{one.location}}</td> -->
                     <td>
                         <br>
-                        <a class="search-icon"  data-toggle="modal" data-target=".bd-view-modal-lg" (click)="viewById(this.one.id)"> <i class="fa fa-eye" aria-hidden="true" style="font-size: 1.5em;"></i> </a>
+                        <a class="search-icon"  data-toggle="modal" data-target=".bd-view-modal-lg" (click)="viewById(one.id)"> <i class="fa fa-eye" aria-hidden="true" style="font-size: 1.5em;"></i> </a>
                     </td>
                     <td>
                         <br>
@@ -218,7 +220,7 @@
 
 <!-- View Modal -->
 
-<div class="modal fade bd-view-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div *ngIf="user" class="modal fade bd-view-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -239,7 +241,7 @@
                               <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                              {{this.two.fname}} {{this.two.lname}}
+                              {{two.fname}} {{two.lname}}
                             </div>
                           </div>
                           <hr>

@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +26,8 @@ export class UserserviceService {
     return this.http.post("http://localhost:8080/edit-user",user, {responseType : "text" as "json"});
   }
 
-  public findByFirstname(fname){
-    return this.http.get("http://localhost:8080/search/"+fname);
+  public findByFirstname(fname) : Observable<User[]>{
+    return this.http.get<User[]>("http://localhost:8080/search/"+fname);
   }
   
   public findById(id){
