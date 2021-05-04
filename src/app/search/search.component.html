@@ -78,37 +78,27 @@
 
                                                       <div class="form-group">
                                                         <label for="firstname">First name</label>
-                                                        <input class="form-control" type="text" required #fname="ngModel" [class.is-invalid]="fname.invalid && fname.touched" name="fname" id="firstname" [ngModel]="obj?.fname" (ngModelChange)="obj.fname = $event" maxlength="28" placeholder="Enter First name" />
-                                                        <small class="text-danger" [class.d-none]="fname.valid || fname.untouched">First name is required</small>
+                                                        <input readonly class="form-control" type="text" name="fname" id="firstname" [ngModel]="obj?.fname" (ngModelChange)="obj.fname = $event" maxlength="28" placeholder="Enter First name" />
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="lastname">Last name</label>
-                                                        <input class="form-control" type="text" required #lname="ngModel" [class.is-invalid]="lname.invalid && lname.touched" name="lname" id="lastname" [ngModel]="obj?.lname" (ngModelChange)="obj.lname = $event" maxlength="28" placeholder="Enter your Last name" />
-                                                        <small class="text-danger" [class.d-none]="lname.valid || lname.untouched">Last name is required</small>
+                                                        <input readonly class="form-control" type="text" name="lname" id="lastname" [ngModel]="obj?.lname" (ngModelChange)="obj.lname = $event" maxlength="28" placeholder="Enter your Last name" />
                                                     </div>
                                 
                                                     <div class="form-group">
                                                         <label for="gender">Gender</label>
-                                                        <select class="custom-select" required #gender="ngModel" [class.is-invalid]="gender.invalid && gender.touched" name="gender" id="gender" [ngModel]="obj?.gender" (ngModelChange)="obj.gender = $event">
-                                                            <option value="">I am...</option>
-                                                            <option>Male</option>
-                                                            <option>Female</option>
-                                                            <option>Other</option>
-                                                        </select>
-                                                        <small class="text-danger" [class.d-none]="gender.valid || gender.untouched">Choose gender of candidate</small>
+                                                        <input readonly class="form-control" name="gender" id="gender" [ngModel]="obj?.gender" (ngModelChange)="obj.gender = $event">
                                                     </div>
 
                                                     
                                                         <div class="form-group">
                                                           <label for="age">Age</label>
-                                                          <input class="form-control" type="number" required #age="ngModel" pattern="^(?:1[8-9]|[2-5][0-9]|60)$" [class.is-invalid]="age.invalid && age.touched" name="age" id="age" [ngModel]="obj?.age" (ngModelChange)="obj.age = $event" placeholder="Enter your Age" />
-                                                          <small class="text-danger" [class.d-none]="age.valid || age.untouched">Enter a valid age (18-60) </small>
+                                                          <input readonly class="form-control" type="number" pattern="^(?:1[8-9]|[2-5][0-9]|60)$" name="age" id="age" [ngModel]="obj?.age" (ngModelChange)="obj.age = $event" placeholder="Enter your Age" />
                                                         </div>
                                   
                                                       <div class="form-group">
                                                           <label for="email">Email</label>
-                                                          <input class="form-control" type="email" required #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="email.invalid && email.touched" name="email" id="email" [ngModel]="obj?.email" (ngModelChange)="obj.email = $event" placeholder="Enter your Email" />
-                                                          <small class="text-danger" [class.d-none]="email.valid || email.untouched">Enter a valid email id</small>
+                                                          <input readonly class="form-control" type="email" name="email" id="email" [ngModel]="obj?.email" (ngModelChange)="obj.email = $event" placeholder="Enter your Email" />
                                                       </div>
                                   
                                                       <div class="form-group">
@@ -132,8 +122,7 @@
                                                       </div>
                                                       <div class="form-group">
                                                         <label for="date">Date of Joining</label>
-                                                        <input class="form-control" type="date" value="DD-MM-YYYY" name="date" id="date" required #date="ngModel" [class.is-invalid]="date.invalid && date.touched" [ngModel]="obj?.date" (ngModelChange)="obj.date = $event" placeholder="Select date of joining">
-                                                        <small class="text-danger" [class.d-none]="date.valid || date.untouched">Enter date of joining</small>
+                                                        <input readonly class="form-control" type="date" value="DD-MM-YYYY" name="date" id="date" [ngModel]="obj?.date" (ngModelChange)="obj.date = $event" placeholder="Select date of joining">
                                                       </div>
                                                       <div class="form-group">
                                                         <label for="feedback">Feedback</label>
@@ -149,8 +138,7 @@
                                                       </div>
                                                       <div class="form-group">
                                                           <label for="institution">Institution </label>
-                                                          <input class="form-control" type="text" required #inst="ngModel" [class.is-invalid]="inst.invalid && inst.touched" name="institution" id="institution" [ngModel]="obj?.institution" (ngModelChange)="obj.institution = $event" placeholder="Name of Institution" />
-                                                          <small class="text-danger" [class.d-none]="inst.valid || inst.untouched">Institution name is required</small>
+                                                          <input readonly class="form-control" type="text" name="institution" id="institution" [ngModel]="obj?.institution" (ngModelChange)="obj.institution = $event" placeholder="Name of Institution" />
                                                       </div>
                                                       <div class="form-group">
                                                           <label for="skillset">Choose your skillset (Use ',' as a delimeter) </label>
