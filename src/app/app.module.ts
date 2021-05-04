@@ -17,7 +17,7 @@ import { TrendsComponent } from './trends/trends.component';
 import { LogsComponent } from './logs/logs.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
+import { LogserviceService } from './logservice.service';
 
 @NgModule({
   declarations: [
@@ -37,11 +37,10 @@ import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
     AppRoutingModule,
     SocialLoginModule,
     HttpClientModule,
-    FormsModule,
-    LoggerModule.forRoot({serverLoggingUrl: 'http://localhost:8080/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR})
+    FormsModule
   ],
   providers: [
-    httpInterceptProviders,AuthguardService,
+    httpInterceptProviders,AuthguardService,LogserviceService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { SocialloginService } from './sociallogin.service';
 import { Router } from '@angular/router';
+import { LogserviceService } from './logservice.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class LoginparserService {
   constructor(
     private socialloginService : SocialloginService,
     private router : Router,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private logger : LogserviceService
   ) { 
     this.logStatus = false;
   }
@@ -46,11 +48,12 @@ export class LoginparserService {
       console.log(res);
     });
     this.socialAuthService.signOut();
+    this.logger.log(localStorage.getItem('name')+" Signed Out successfully.");
     console.log("logging out");
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     localStorage.removeItem('name');
-      localStorage.removeItem('email');
+    localStorage.removeItem('email');
     this.logStatus=false;
     this.router.navigate([`/`]); 
   }

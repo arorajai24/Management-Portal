@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
+import { LogserviceService } from '../logservice.service';
 import { UserserviceService } from '../userservice.service';
 
 @Component({
@@ -12,17 +13,20 @@ export class ShowallComponent implements OnInit {
   user : any;
   obj : any;
 
-  constructor(private service : UserserviceService, @Inject(DOCUMENT) private document : Document) { }
+  constructor(private logger : LogserviceService, private service : UserserviceService, @Inject(DOCUMENT) private document : Document) { }
 
   ngOnInit(): void {
+    this.logger.log("Retrieved list of all candidates. (View All Component)");
     let response = this.service.getAllUsers();
     response.subscribe(data => this.user = data);
   }
 
   public removeUser(id : number){
+    this.logger.log("Removing candidate with id : "+ id);
     let response = this.service.deleteUser(id);
     response.subscribe(data => this.user = data);
     this.document.defaultView.location.reload();
+    this.logger.log("Candidate with id : "+id+ " deleted successfully.");
   }
 
   public editById(id){

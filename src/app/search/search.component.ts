@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LogserviceService } from '../logservice.service';
 import { User } from '../user';
 import { UserserviceService } from '../userservice.service';
 
@@ -24,31 +25,28 @@ export class SearchComponent implements OnInit {
   message : any;
   obj : any;
   two : any;
+  str : String;
+  temp : any;
 
-  constructor(private route : ActivatedRoute, private service : UserserviceService, private router : Router, @Inject(DOCUMENT) private document : Document) { }
+  constructor(private logger : LogserviceService, private route : ActivatedRoute, private service : UserserviceService, private router : Router, @Inject(DOCUMENT) private document : Document) { }
 
   ngOnInit(): void {
 
   }
 
-  public searchByFirstname()
+  public searchBySearchVar()
   {
-    let response = this.service.findByFirstname(this.searchVar).subscribe(data => {console.log(data)
-    this.user = data
-    console.log("check-0")
-      console.log(this.user);
-      });
-      
-    // response.subscribe(data => this.user = data);
-    // console.log("CHeck 1");
-    // console.log(response);
-    // console.log(this.parse);
+    this.logger.log("Searching database by '"+ this.searchVar +"'");
+    this.service.findBySearchVar(this.searchVar).subscribe(data => {this.user = data});
+    this.logger.log("Retrieved possible matches for '"+ this.searchVar +"'");
   }
   public removeUser(id)
   {
+    this.logger.log("Removing candidate with id : "+ id);
     let response = this.service.deleteUser(id);
-    // response.subscribe(data => this.user = data);
+    response.subscribe(data => this.temp = data);
     this.document.defaultView.location.reload();
+    this.logger.log("Candidate with id : "+id+ " deleted successfully.");
   }
 
   public viewById(id){
@@ -59,9 +57,6 @@ export class SearchComponent implements OnInit {
         this.two = this.user[i];
       }
     }
-    // let response = this.service.findById(id);
-    // response.subscribe(data => this.two = data);
-    // console.log(this.user); 
   }
   
   public editById(id){
@@ -71,10 +66,28 @@ export class SearchComponent implements OnInit {
 
   public editNow(user_new)
   {
+    this.logger.log("Editing user in database with id : "+ user_new.id);
+    console.log(user_new);
     let reponse = this.service.doEdit(user_new);
     reponse.subscribe(data => {
       this.message = data;
     });
+
+    if(!this.obj.contact.equals(user_new.contact))
+			this.str.concat("contact is edited from "+this.obj.contact+" to "+ user_new.contact+" ; ");
+		if(!this.obj.address.equals(user_new.address))
+      this.str.concat("address is edited from "+this.obj.address+" to "+  user_new.address+" ; ");
+		if(!this.obj.role.equals(user_new.role))
+      this.str.concat("Role is edited from "+this.obj.role+" to "+  user_new.role+" ; ");
+		if(!this.obj.feedback.equals(user_new.feedback))
+      this.str.concat("Feedback is edited from "+this.obj.feedback+" to "+  user_new.feedback+" ; ");
+		if(!this.obj.skillset.equals(user_new.skillset))
+      this.str.concat("Skillset is edited from "+this.obj.skillset+" to "+ user_new.skillset+" ; ");
+		if(!this.obj.location.equals(user_new.location))
+      this.str.concat("Location is edited from "+this.obj.location+" to "+  user_new.location+" ; ");
+    
+    this.logger.log(this.obj.id + " is edited successfully where "+ this.str +" successfully.");
+    //this.document.defaultView.location.reload();
   }
 
 }

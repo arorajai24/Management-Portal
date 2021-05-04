@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginparserService } from '../loginparser.service';
+import { LogserviceService } from '../logservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +14,10 @@ export class DashboardComponent implements OnInit {
   email = localStorage.getItem('email');
   photoUrl = localStorage.getItem('photoUrl');
 
-  constructor(private loginparser : LoginparserService, private router : Router, private route : ActivatedRoute) { }
+  constructor(private logger : LogserviceService, private loginparser : LoginparserService, private router : Router, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.logger.log(this.name + " ("+this.email+") Signed In successfully.");
   }
 
   onSignOut()

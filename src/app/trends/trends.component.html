@@ -23,11 +23,11 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                       <ul class="navbar-nav">
-                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(1)">Skillset Among Candidates</button>&nbsp;
-                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(2)">Candidates joined each year</button>&nbsp;
-                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(3)">Joining Location of Grads</button>&nbsp;
-                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(4)">Feedback Vs Candidate</button>&nbsp;
-                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(5)">Role Diversity in Accolite</button>
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(chart[0].id)">{{chart[0].value}}</button>&nbsp;
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(chart[1].id)">{{chart[1].value}}</button>&nbsp;
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(chart[2].id)">{{chart[2].value}}</button>&nbsp;
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(chart[3].id)">{{chart[3].value}}</button>&nbsp;
+                        <button type="button" class="btn btn-primary p-2 flex-fill bd-highlight" (click)="openChart(chart[4].id)">{{chart[4].value}}</button>
                       </ul>
                     </div>
                   </nav>
