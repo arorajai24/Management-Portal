@@ -25,8 +25,9 @@ export class ShowallComponent implements OnInit {
     this.logger.log("Removing candidate with id : "+ id);
     let response = this.service.deleteUser(id);
     response.subscribe(data => this.user = data);
-    this.document.defaultView.location.reload();
     this.logger.log("Candidate with id : "+id+ " deleted successfully.");
+    this.logger.log("Refreshing...")
+    this.document.defaultView.location.reload();
   }
 
   public editById(id){

@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
   message : any;
   obj : any;
   two : any;
-  str : String;
+  str : string;
   temp : any;
 
   constructor(private logger : LogserviceService, private route : ActivatedRoute, private service : UserserviceService, private router : Router, @Inject(DOCUMENT) private document : Document) { }
@@ -45,8 +45,9 @@ export class SearchComponent implements OnInit {
     this.logger.log("Removing candidate with id : "+ id);
     let response = this.service.deleteUser(id);
     response.subscribe(data => this.temp = data);
-    this.document.defaultView.location.reload();
     this.logger.log("Candidate with id : "+id+ " deleted successfully.");
+    this.logger.log("Refreshing...")
+    this.document.defaultView.location.reload();
   }
 
   public viewById(id){
@@ -73,21 +74,30 @@ export class SearchComponent implements OnInit {
       this.message = data;
     });
 
-    if(!this.obj.contact.equals(user_new.contact))
-			this.str.concat("contact is edited from "+this.obj.contact+" to "+ user_new.contact+" ; ");
-		if(!this.obj.address.equals(user_new.address))
-      this.str.concat("address is edited from "+this.obj.address+" to "+  user_new.address+" ; ");
-		if(!this.obj.role.equals(user_new.role))
-      this.str.concat("Role is edited from "+this.obj.role+" to "+  user_new.role+" ; ");
-		if(!this.obj.feedback.equals(user_new.feedback))
-      this.str.concat("Feedback is edited from "+this.obj.feedback+" to "+  user_new.feedback+" ; ");
-		if(!this.obj.skillset.equals(user_new.skillset))
-      this.str.concat("Skillset is edited from "+this.obj.skillset+" to "+ user_new.skillset+" ; ");
-		if(!this.obj.location.equals(user_new.location))
-      this.str.concat("Location is edited from "+this.obj.location+" to "+  user_new.location+" ; ");
+    this.str = "";    
+    if(!this.equals(this.obj.contact, user_new.contact))
+			this.str = this.str.concat(" contact is edited from "+this.obj.contact+" to "+ user_new.contact+" & ");
+		if(!this.equals(this.obj.address, user_new.address))
+      this.str = this.str.concat(" address is edited from "+this.obj.address+" to "+ user_new.address+" & ");
+		if(!this.equals(this.obj.feedback, user_new.feedback))
+      this.str = this.str.concat(" feedback is edited from "+this.obj.feedback+" to "+ user_new.feedback+" & ");
+		if(!this.equals(this.obj.role, user_new.role))
+      this.str = this.str.concat(" role is edited from "+this.obj.role+" to "+ user_new.role+" & ");
+		if(!this.equals(this.obj.location, user_new.location))
+      this.str = this.str.concat(" location is edited from "+this.obj.location+" to "+ user_new.location+" & ");
+		if(!this.equals(this.obj.skillset, user_new.skillset))
+      this.str = this.str.concat(" skillset is edited from "+this.obj.skillset+" to "+ user_new.skillset+" & ");
     
     this.logger.log(this.obj.id + " is edited successfully where "+ this.str +" successfully.");
+    this.logger.log("Refreshing...")
     //this.document.defaultView.location.reload();
+  }
+
+  equals(str1, str2) : boolean
+  {
+    if(str1==str2)
+      return true;
+    return false;
   }
 
 }

@@ -19,6 +19,7 @@
                         <div class="form-row form-group">
                         <label for="firstname" class="col-sm-2 col-form-label">First name<i style='color: red;'>*</i></label>
                         <input class="form-control col-sm-10" type="text" required #fname="ngModel" [class.is-invalid]="fname.invalid && fname.touched" name="fname" id="firstname" [(ngModel)]="user.fname" maxlength="28" placeholder="Enter First name" />
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="fname.valid || fname.untouched">First name is required</small>
                         </div>
                     </div>
@@ -26,6 +27,7 @@
                         <div class="form-row form-group">
                         <label for="lastname" class="col-sm-2 col-form-label">Last name<i style='color: red;'>*</i></label>
                         <input class="form-control col-sm-10" type="text" required #lname="ngModel" [class.is-invalid]="lname.invalid && lname.touched" name="lname" id="lastname" [(ngModel)]="user.lname" maxlength="28" placeholder="Enter your Last name" />
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="lname.valid || lname.untouched">Last name is required</small>
                         </div>
                     </div>
@@ -38,6 +40,7 @@
                             <option>Female</option>
                             <option>Other</option>
                         </select>
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="gender.valid || gender.untouched">Choose gender of candidate</small>
                         </div>
                     </div>
@@ -45,6 +48,7 @@
                         <div class="form-row form-group">
                         <label for="age" class="col-sm-2 col-form-label">Age<i style='color: red;'>*</i></label>
                         <input class="form-control  col-sm-10" type="number" required #age="ngModel" pattern="^(?:1[8-9]|[2-5][0-9]|60)$" [class.is-invalid]="age.invalid && age.touched" name="age" id="age" [(ngModel)]="user.age" placeholder="Enter your Age" />
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="age.valid || age.untouched">Enter a valid age (18-60) </small>
                     </div>
                     </div>
@@ -52,6 +56,7 @@
                         <div class="form-row form-group">
                         <label for="email" class="col-sm-2 col-form-label">Email<i style='color: red;'>*</i></label>
                         <input class="form-control  col-sm-10" required #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="email.invalid && email.touched" type="email" name="email" id="email" [(ngModel)]="user.email" placeholder="Enter your Email" />
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="email.valid || email.untouched">Enter a valid email id</small>
                     </div>
                     </div>
@@ -59,6 +64,7 @@
                         <div class="form-row form-group">
                         <label for="contact" class="col-sm-2 col-form-label">Contact<i style='color: red;'>*</i></label>
                         <input class="form-control  col-sm-10" type="tel" required #contact="ngModel" pattern="\d{10}$" [class.is-invalid]="contact.invalid && contact.touched" maxlength="10" name="contact" id="contact" [(ngModel)]="user.contact" placeholder="Enter your Contact" />
+                        <small class="col-sm-2"></small>
                         <div *ngIf="contact.errors && (contact.invalid && contact.touched)">
                             <small class="text-danger" [class.d-none]="contact.errors.required">Contact number is mandatory.</small>
                             <small class="text-danger" [class.d-none]="contact.errors.pattern">Contact number must have 10 digits only.</small>
@@ -69,6 +75,7 @@
                         <div class="form-row form-group">
                         <label for="address" class="col-sm-2 col-form-label">Address<i style='color: red;'>*</i></label>
                         <input class="form-control  col-sm-10" type="text" required #address="ngModel" [class.is-invalid]="address.invalid && address.touched" name="address" id="address" [(ngModel)]="user.address" placeholder="Enter your Address" />
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="address.valid || address.untouched">Address field is mandatory</small>
                     </div>
                     </div>
@@ -76,6 +83,7 @@
                         <div class="form-row form-group">
                         <label for="role" class="col-sm-2 col-form-label">Role<i style='color: red;'>*</i></label>
                         <input class="form-control  col-sm-10" type="text" required #role="ngModel" [class.is-invalid]="role.invalid && role.touched" name="role" id="role" [(ngModel)]="user.role" placeholder="Enter role" />
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="role.valid || role.untouched">Enter Candidate Role</small>
                     </div>
                     </div>
@@ -83,6 +91,7 @@
                         <div class="form-row form-group">
                         <label for="date" class="col-sm-2 col-form-label">Date of Joining<i style='color: red;'>*</i></label>
                         <input class="form-control  col-sm-10" type="date" value="DD-MM-YYYY" name="date" id="date" required #date="ngModel" [class.is-invalid]="date.invalid && date.touched" [(ngModel)]="user.date" placeholder="Select date of joining">
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="date.valid || date.untouched">Enter date of joining</small>
                       </div>
                     </div>
@@ -97,6 +106,7 @@
                             <option>Good</option>
                             <option>Excellent</option>
                         </select>
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="feedback.valid || feedback.untouched">Enter Feedback</small>
                     </div>
                     </div>
@@ -104,14 +114,15 @@
                         <div class="form-row form-group">
                         <label for="institution" class="col-sm-2 col-form-label">Institution<i style='color: red;'>*</i></label>
                         <input class="form-control  col-sm-10" type="text" required #inst="ngModel" [class.is-invalid]="inst.invalid && inst.touched" name="institution" id="institution" [(ngModel)]="user.institution" placeholder="Name of Institution" />
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="inst.valid || inst.untouched">Institution name is required</small>
                     </div>
                     </div>
                     <div class="col-12">
                         <div class="form-row form-group">
                         <label for="skillset" class="col-sm-2 col-form-label">Choose your skillset<i style='color: red;'>*</i></label>
-                        <input class="form-control col-sm-10" type="text" required #skill="ngModel" [class.is-invalid]="skill.invalid && skill.touched" name="skillset" id="skillset" [(ngModel)]="user.skillset" placeholder="Enter your Skillset" />
-                        <small>(Use ',' as a delimeter)</small>
+                        <input class="form-control col-sm-10" type="text" required #skill="ngModel" [class.is-invalid]="skill.invalid && skill.touched" name="skillset" id="skillset" [(ngModel)]="user.skillset" placeholder="Enter your skillset (Use ',' as a delimeter)" />
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="skill.valid || skill.untouched">Skillset is required OR input NA</small>
                     </div>
                     </div>
@@ -127,11 +138,12 @@
                             <option>Bangalore</option>
                             <option>Hyderabad</option>
                         </select>
+                        <small class="col-sm-2"></small>
                         <small class="text-danger" [class.d-none]="location.valid || location.untouched">Choose location of candidate<i style='color: red;'>*</i></small>
                     </div>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success" [disabled]="userForm.form.invalid" type="submit" name="register" value="Register" (click)="registerNow()" data-toggle="modal" data-target="#registerModal">Register</button>
+                        <button class="btn btn-success" [disabled]="userForm.form.invalid" type="reset" name="register" value="Register" (click)="registerNow()" data-toggle="modal" data-target="#registerModal">Register</button>
 
                         <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">

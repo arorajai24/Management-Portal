@@ -33,4 +33,8 @@ export class UserserviceService {
   public findById(id){
     return this.http.get("http://localhost:8080/findById/"+id);
   }
+
+  public retrieveLogs() : Observable<String[]>{
+    return this.http.get<String[]>("http://localhost:8080/dashboard/logs/");
+  }
 }

@@ -1,1 +1,40 @@
-<p>logs works!</p>
+<div class="container mt-2" style='margin-right: 100px;'>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <div class="card p-4 mt-3">
+                <div class="d-flex justify-content-center px-5">
+                    <div class="display-4">Logs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+
+
+<div class="container" style='margin-right: 100px;'>
+    <div class = "row col-lg-12 col-sm-12">
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Date & TimeStamp</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div class = "container" name = "logs" [(ngModel)]="logs" style='margin-right: 100px;'>
+    <div class = "row col-lg-12 col-sm-12">
+        <table class = "table table-striped">
+            <tbody>
+                <tr *ngFor = "let log of logs">
+                    <td>{{log}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
