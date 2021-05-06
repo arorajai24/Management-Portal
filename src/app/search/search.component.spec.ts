@@ -1,7 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 import { LogserviceService } from '../logservice.service';
+import { User } from '../user';
+import { UserserviceService } from '../userservice.service';
 
 import { SearchComponent } from './search.component';
 
@@ -13,7 +17,7 @@ describe('SearchComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ SearchComponent ],
       imports : [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
-      providers : [LogserviceService]
+      providers : [LogserviceService, UserserviceService]
     })
     .compileComponents();
   });
@@ -24,7 +28,27 @@ describe('SearchComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Search Component', () => {
     expect(component).toBeTruthy();
   });
+
+  // it("tracks all the arguments of its calls", function() {
+  //   expect(tape.rewind).toHaveBeenCalledWith(0);
+  // });
+
+// it('should foobar', () => {
+//     var http : HttpClient;
+//     var service : UserserviceService = new UserserviceService(http);
+//     spyOn(service, 'findBySearchVar');
+//     component.searchBySearchVar();
+//     expect(service.findBySearchVar).toHaveBeenCalledWith("text");
+// })
+
+  it("testing equals function : Test Case 1", ()=>{
+    expect(component.equals("One","One")).toBe(true);
+  })
+  it("testing equals function : Test Case 2", ()=>{
+    expect(component.equals("One","Two")).toBe(false);
+  })
+  
 });

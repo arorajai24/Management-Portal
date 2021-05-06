@@ -47,143 +47,7 @@
                       <td>{{one.location}}</td> -->
                       <td>
                         <br>
-                          <a class="search-icon"  data-toggle="modal" data-target=".bd-view-modal-lg" (click)="editById(one.id)"> <i class="fa fa-eye" style="font-size: 1.5em;" aria-hidden="true"></i></a>
-                      
-                          <div class="modal fade bd-view-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                              <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">View Record</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    
-                                      <div class="container">
-                                          <div class="view-main-body">
-                                              <div class="col-md-12">
-                                                  <div class="card mb-3">
-                                                    <div class="card-body">
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Full Name</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.fname}} {{one.lname}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Age</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.age}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Gender</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.gender}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Email</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.email}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Contact</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.contact}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Address</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.address}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Role</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.role}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Feedback</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.feedback}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Location</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.location}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Year</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.date}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">Institute</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.institution}}
-                                                        </div>
-                                                      </div>
-                                                      <hr>
-                                                      <div class="row">
-                                                        <div class="col-sm-3">
-                                                          <h6 class="mb-0">skillset</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                          {{one.skillset}}
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
-                                  </div>
-                                </div>
-                              </div>
-                            </div>  
+                          <a class="search-icon"  data-toggle="modal" data-target=".bd-view-modal-lg" (click)="viewById(one.id)"> <i class="fa fa-eye" style="font-size: 1.5em;" aria-hidden="true"></i></a>
   
                       </td>
                       <td>
@@ -216,4 +80,140 @@
   </div>
 
 
- 
+  <!-- View Modal -->
+
+  <div class="modal fade bd-view-modal-lg" *ngIf="obj" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">View Record</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+            <div class="container">
+                <div class="view-main-body">
+                    <div class="col-md-12">
+                        <div class="card mb-3">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Full Name</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.fname}} {{obj.lname}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Age</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.age}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Gender</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.gender}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.email}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Contact</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.contact}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Address</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.address}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Role</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.role}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Feedback</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.feedback}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Location</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.location}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Year</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.date}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Institute</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.institution}}
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">skillset</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{obj.skillset}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+        </div>
+      </div>
+    </div>
+  </div>  

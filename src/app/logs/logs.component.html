@@ -1,4 +1,4 @@
-<div class="container mt-2" style='margin-right: 100px;'>
+<div class="container mt-2">
     <div class="row d-flex justify-content-center">
         <div class="col-md-12">
             <div class="card p-4 mt-3">
@@ -13,24 +13,31 @@
 
 
 
-<div class="container" style='margin-right: 100px;'>
-    <div class = "row col-lg-12 col-sm-12">
+<div class="container">
+    <div class = "row col-md-12 col-sm-12">
         <table class = "table table-striped">
             <thead>
-                <tr>
-                    <th>Day</th>
+                <tr class="text-center">
+                    <th>User</th>
+                    <th>Log</th>
                     <th>Date & TimeStamp</th>
-                    <th>Message</th>
                 </tr>
             </thead>
+            <tbody>
+                <tr *ngFor = "let log of parser" class="text-center">
+                    <td>{{log.user}}</td>
+                    <td>{{log.msg}}</td>
+                    <td>{{log.datetime}}</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
-<div class = "container" name = "logs" [(ngModel)]="logs" style='margin-right: 100px;'>
+<div class = "container" name = "logger" ngDefaultControl [(ngModel)]="logger">
     <div class = "row col-lg-12 col-sm-12">
         <table class = "table table-striped">
             <tbody>
-                <tr *ngFor = "let log of logs">
+                <tr *ngFor = "let log of logger">
                     <td>{{log}}</td>
                 </tr>
             </tbody>

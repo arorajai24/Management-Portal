@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.logger.log(this.name + " ("+this.email+") Signed In successfully.");
+    this.onSearch();
   }
 
   onSignOut()

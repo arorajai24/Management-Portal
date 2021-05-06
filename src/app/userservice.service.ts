@@ -10,8 +10,8 @@ export class UserserviceService {
 
   constructor(private http : HttpClient) { }
 
-  public getAllUsers(){
-    return this.http.get("http://localhost:8080/allusers");
+  public getAllUsers() : Observable<User[]>{
+    return this.http.get<User[]>("http://localhost:8080/allusers");
   }
 
   public deleteUser(id){
@@ -30,11 +30,11 @@ export class UserserviceService {
     return this.http.get<User[]>("http://localhost:8080/search/"+fname);
   }
   
-  public findById(id){
-    return this.http.get("http://localhost:8080/findById/"+id);
+  public findById(id) : Observable<User>{
+    return this.http.get<User>("http://localhost:8080/findById/"+id);
   }
 
-  public retrieveLogs() : Observable<String[]>{
-    return this.http.get<String[]>("http://localhost:8080/dashboard/logs/");
+  public retrieveLogs() : Observable<string[]>{
+    return this.http.get<string[]>("http://localhost:8080/dashboard/logs/");
   }
 }

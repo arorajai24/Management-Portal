@@ -26,4 +26,5 @@ export class RegisterComponent implements OnInit {
     });
     this.logger.log("User registered by name: "+ this.user.fname + " " + this.user.lname+".");
   }
+
 }

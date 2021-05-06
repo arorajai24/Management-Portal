@@ -25,4 +25,17 @@ describe('RegisterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it("testing function", ()=>{
+  //   expect(component.registerNow).toBe("propertyValue");
+  // })
+
+  // it("testing property", ()=>{
+  //   expect(component.propertyname).toBe("propertyValue");
+  // })
+
+  // it("testing htlm element", ()=>{
+  //   const data = fixture.nativeElement;
+  //   expect(data.querySelector(".classname").textContent).toContain("Value")
+  // })
 });

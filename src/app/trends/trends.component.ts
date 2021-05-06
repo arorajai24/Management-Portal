@@ -18,13 +18,14 @@ export class TrendsComponent implements OnInit {
   constructor(private logger : LogserviceService, private trend : TrendserviceService) { }
 
   ngOnInit(): void {
+    this.openChart(1);
   }
  
   chart = [
     { id : 1 , value : "Skillset Among Candidates"},
     { id : 2 , value : "Candidates joined each year"},
-    { id : 3 , value : "Joining Location of Grads"},
-    { id : 4 , value : "Feedback Vs Candidate"},
+    { id : 3 , value : "Joining Location of Candidates"},
+    { id : 4 , value : "Performance of Candidate"},
     { id : 5 , value : "Role Diversity in Accolite"},
   ];
   openChart(id : number)
