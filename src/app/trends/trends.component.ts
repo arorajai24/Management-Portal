@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataItem, Series } from '@swimlane/ngx-charts';
-import { ChartDataModel, SeriesModel } from '../chartDataModel';
 import { LogserviceService } from '../logservice.service';
 import { TrendserviceService } from '../trendservice.service';
 

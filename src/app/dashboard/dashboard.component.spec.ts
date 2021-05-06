@@ -1,4 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 'angularx-social-login';
+import { LoginparserService } from '../loginparser.service';
+import { LogserviceService } from '../logservice.service';
 
 import { DashboardComponent } from './dashboard.component';
 
@@ -8,7 +13,24 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      declarations: [ DashboardComponent ],
+      imports : [ HttpClientTestingModule, RouterTestingModule.withRoutes([])],
+      providers : [LogserviceService, LoginparserService, SocialAuthService,
+        {
+          provide: 'SocialAuthServiceConfig',
+          useValue: {
+            autoLogin: false,
+            providers: [
+              {
+                id: GoogleLoginProvider.PROVIDER_ID,
+                provider: new GoogleLoginProvider(
+                  '859429172963-vtq8gbqqitma1cta7br669tc8t1cj8vb.apps.googleusercontent.com'
+                )
+              }
+            ]
+          } as SocialAuthServiceConfig,
+        }
+      ]
     })
     .compileComponents();
   });

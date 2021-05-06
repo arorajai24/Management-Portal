@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { httpInterceptProviders } from './index';
 import { AuthguardService } from './authguard.service';
 import { SearchComponent } from './search/search.component';
@@ -40,7 +40,7 @@ import { LogserviceService } from './logservice.service';
     FormsModule
   ],
   providers: [
-    httpInterceptProviders,AuthguardService,LogserviceService,
+    httpInterceptProviders, HttpClient, AuthguardService,LogserviceService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
