@@ -6,7 +6,7 @@
                 <div class="display-4">Search Database</div>
             </div>
                 <div class="d-flex justify-content-center px-5">
-                    <div class="search"> <input type="text" class="search-input" placeholder="Search..." name="searchVar" [(ngModel)]="searchVar"> &nbsp; <a class="search-icon" (click)="searchBySearchVar()"> <i class="fa fa-search" style="font-size: 1.5em;"></i> </a> </div>
+                    <div class="search"> <input type="text" class="search-input" placeholder="Search..." name="searchVar" ngDefaultControl [(ngModel)]="searchVar"> &nbsp; <a class="search-icon" (click)="searchBySearchVar()"><i class="fa fa-search" style="font-size: 1.5em;"></i></a></div>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr [(ngModel)] = "user" *ngFor = "let one of user">
+                <tr name="user" ngDefaultControl [(ngModel)] = "user" *ngFor = "let one of user">
                     <td>{{this.one.id}}</td>
                     <td>{{this.one.fname}}</td>
                     <td>{{this.one.lname}}</td>
@@ -51,11 +51,11 @@
                     <td>{{one.location}}</td> -->
                     <td>
                         <br>
-                        <a class="search-icon"  data-toggle="modal" data-target=".bd-view-modal-lg" (click)="viewById(one.id)"> <i class="fa fa-eye" aria-hidden="true" style="font-size: 1.5em;"></i> </a>
+                        <a class="search-icon"  data-toggle="modal" data-target=".bd-view-modal-lg" (click)="viewById(one.id)"> <i class="fa fa-eye" aria-hidden="true" style="font-size: 1.5em; color: white;"></i> </a>
                     </td>
                     <td>
                         <br>
-                        <a class="search-icon"  data-toggle="modal" data-target=".bd-example-modal-lg" (click)="editById(one.id)"> <i class="fas fa-edit" style="font-size: 1.5em;"></i> </a>
+                        <a class="search-icon" style="background-color: #2ca321;" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="editById(one.id)"> <i class="fas fa-edit" style="font-size: 1.5em;"></i> </a>
                         
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -75,58 +75,75 @@
                                                 </div>
                                                 <form #userForm="ngForm">
                                                     <fieldset>
-
-                                                      <div class="form-group">
-                                                        <label for="firstname">First name</label>
-                                                        <input readonly class="form-control" type="text" name="fname" id="firstname" [ngModel]="obj?.fname" (ngModelChange)="obj.fname = $event" maxlength="28" placeholder="Enter First name" />
+                                                      
+                                                    <div class="col-12">
+                                                      <div class="form-row form-group">
+                                                        <label for="firstname" class="col-sm-2 col-form-label">First name</label>
+                                                        <input readonly class="form-control col-sm-10" type="text" name="fname" id="firstname" [ngModel]="obj?.fname" (ngModelChange)="obj.fname = $event" maxlength="28" placeholder="Enter First name" />
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="lastname">Last name</label>
-                                                        <input readonly class="form-control" type="text" name="lname" id="lastname" [ngModel]="obj?.lname" (ngModelChange)="obj.lname = $event" maxlength="28" placeholder="Enter your Last name" />
                                                     </div>
-                                
-                                                    <div class="form-group">
-                                                        <label for="gender">Gender</label>
-                                                        <input readonly class="form-control" name="gender" id="gender" [ngModel]="obj?.gender" (ngModelChange)="obj.gender = $event">
+                                                    <div class="col-12">
+                                                      <div class="form-row form-group">
+                                                        <label for="lastname" class="col-sm-2 col-form-label">Last name</label>
+                                                        <input readonly class="form-control col-sm-10" type="text" name="lname" id="lastname" [ngModel]="obj?.lname" (ngModelChange)="obj.lname = $event" maxlength="28" placeholder="Enter your Last name" />
                                                     </div>
-
+                                                    </div>
+                                                    <div class="col-12">
+                                                      <div class="form-row form-group">
+                                                        <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+                                                        <input readonly class="form-control col-sm-10" name="gender" id="gender" [ngModel]="obj?.gender" (ngModelChange)="obj.gender = $event">
+                                                    </div>
+                                                    </div>
                                                     
-                                                        <div class="form-group">
-                                                          <label for="age">Age</label>
-                                                          <input readonly class="form-control" type="number" pattern="^(?:1[8-9]|[2-5][0-9]|60)$" name="age" id="age" [ngModel]="obj?.age" (ngModelChange)="obj.age = $event" placeholder="Enter your Age" />
+                                                    <div class="col-12">
+                                                      <div class="form-row form-group">
+                                                          <label for="age" class="col-sm-2 col-form-label">Age</label>
+                                                          <input readonly class="form-control col-sm-10" type="number" pattern="^(?:1[8-9]|[2-5][0-9]|60)$" name="age" id="age" [ngModel]="obj?.age" (ngModelChange)="obj.age = $event" placeholder="Enter your Age" />
                                                         </div>
-                                  
-                                                      <div class="form-group">
-                                                          <label for="email">Email</label>
-                                                          <input readonly class="form-control" type="email" name="email" id="email" [ngModel]="obj?.email" (ngModelChange)="obj.email = $event" placeholder="Enter your Email" />
+                                                        </div>
+                                                      <div class="col-12">
+                                                        <div class="form-row form-group">
+                                                          <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                                          <input readonly class="form-control col-sm-10" type="email" name="email" id="email" [ngModel]="obj?.email" (ngModelChange)="obj.email = $event" placeholder="Enter your Email" />
                                                       </div>
-                                  
-                                                      <div class="form-group">
-                                                          <label for="contact">Contact</label>
-                                                          <input class="form-control" type="tel" required #contact="ngModel" pattern="\d{10}$" [class.is-invalid]="contact.invalid && contact.touched" maxlength="10" name="contact" id="contact" [ngModel]="obj?.contact" (ngModelChange)="obj.contact = $event" placeholder="Enter your Contact" />
+                                                      </div>
+                                                      <div class="col-12">
+                                                        <div class="form-row form-group">
+                                                          <label for="contact" class="col-sm-2 col-form-label">Contact<i style='color: red;'>*</i></label>
+                                                          <input class="form-control col-sm-10" type="tel" required #contact="ngModel" pattern="\d{10}$" [class.is-invalid]="contact.invalid && contact.touched" maxlength="10" name="contact" id="contact" [ngModel]="obj?.contact" (ngModelChange)="obj.contact = $event" placeholder="Enter your Contact" />
+                                                          <small class="col-sm-2"></small>
                                                           <div *ngIf="contact.errors && (contact.invalid && contact.touched)">
                                                               <small class="text-danger" [class.d-none]="contact.errors.required">Contact number is mandatory.</small>
                                                               <small class="text-danger" [class.d-none]="contact.errors.pattern">Contact number must have 10 digits only.</small>
                                                           </div>
                                                       </div>
-                                                      <div class="form-group">
-                                                          <label for="address">Address</label>
-                                                          <input class="form-control" type="text" required #address="ngModel" [class.is-invalid]="address.invalid && address.touched" name="address" id="address" [ngModel]="obj?.address" (ngModelChange)="obj.address = $event" placeholder="Enter your Address" />
+                                                      </div>
+                                                      <div class="col-12">
+                                                        <div class="form-row form-group">
+                                                          <label for="address" class="col-sm-2 col-form-label">Address<i style='color: red;'>*</i></label>
+                                                          <input class="form-control col-sm-10" type="text" required #address="ngModel" [class.is-invalid]="address.invalid && address.touched" name="address" id="address" [ngModel]="obj?.address" (ngModelChange)="obj.address = $event" placeholder="Enter your Address" />
+                                                          <small class="col-sm-2"></small>
                                                           <small class="text-danger" [class.d-none]="address.valid || address.untouched">Address field is mandatory</small>
                                                       </div>
-                                                      
-                                                      <div class="form-group">
-                                                        <label for="role">Role</label>
-                                                        <input class="form-control" type="text" required #role="ngModel" [class.is-invalid]="role.invalid && role.touched" name="role" id="role" [ngModel]="obj?.role" (ngModelChange)="obj.role = $event" placeholder="Enter role" />
+                                                      </div>
+                                                      <div class="col-12">
+                                                        <div class="form-row form-group">
+                                                        <label for="role" class="col-sm-2 col-form-label">Role<i style='color: red;'>*</i></label>
+                                                        <input class="form-control col-sm-10" type="text" required #role="ngModel" [class.is-invalid]="role.invalid && role.touched" name="role" id="role" [ngModel]="obj?.role" (ngModelChange)="obj.role = $event" placeholder="Enter role" />
+                                                        <small class="col-sm-2"></small>
                                                         <small class="text-danger" [class.d-none]="role.valid || role.untouched">Enter Candidate Role</small>
                                                       </div>
-                                                      <div class="form-group">
-                                                        <label for="date">Date of Joining</label>
-                                                        <input readonly class="form-control" type="date" value="DD-MM-YYYY" name="date" id="date" [ngModel]="obj?.date" (ngModelChange)="obj.date = $event" placeholder="Select date of joining">
                                                       </div>
-                                                      <div class="form-group">
-                                                        <label for="feedback">Feedback</label>
-                                                        <select class="custom-select" required #feedback="ngModel" [class.is-invalid]="feedback.invalid && feedback.touched" name="feedback" id="feedback" [ngModel]="obj?.feedback" (ngModelChange)="obj.feedback = $event">
+                                                      <div class="col-12">
+                                                        <div class="form-row form-group">
+                                                        <label for="date" class="col-sm-2 col-form-label">Date of Joining</label>
+                                                        <input readonly class="form-control col-sm-10" type="date" value="DD-MM-YYYY" name="date" id="date" [ngModel]="obj?.date" (ngModelChange)="obj.date = $event" placeholder="Select date of joining">
+                                                      </div>
+                                                      </div>
+                                                      <div class="col-12">
+                                                        <div class="form-row form-group">
+                                                        <label for="feedback" class="col-sm-2 col-form-label">Feedback<i style='color: red;'>*</i></label>
+                                                        <select class="custom-select col-sm-10" required #feedback="ngModel" [class.is-invalid]="feedback.invalid && feedback.touched" name="feedback" id="feedback" [ngModel]="obj?.feedback" (ngModelChange)="obj.feedback = $event">
                                                           <option value="">Select</option>
                                                           <option>Worse</option>
                                                           <option>Poor</option>
@@ -134,20 +151,28 @@
                                                           <option>Good</option>
                                                           <option>Excellent</option>
                                                         </select>
+                                                        <small class="col-sm-2"></small>
                                                         <small class="text-danger" [class.d-none]="feedback.valid || feedback.untouched">Enter Feedback</small>
                                                       </div>
-                                                      <div class="form-group">
-                                                          <label for="institution">Institution </label>
-                                                          <input readonly class="form-control" type="text" name="institution" id="institution" [ngModel]="obj?.institution" (ngModelChange)="obj.institution = $event" placeholder="Name of Institution" />
                                                       </div>
-                                                      <div class="form-group">
-                                                          <label for="skillset">Choose your skillset (Use ',' as a delimeter) </label>
-                                                          <input class="form-control" type="text" required #skill="ngModel" [class.is-invalid]="skill.invalid && skill.touched" name="skillset" id="skillset" [ngModel]="obj?.skillset" (ngModelChange)="obj.skillset = $event" placeholder="Enter your Skillset" />
+                                                      <div class="col-12">
+                                                        <div class="form-row form-group">
+                                                          <label for="institution" class="col-sm-2 col-form-label">Institution</label>
+                                                          <input readonly class="form-control col-sm-10" type="text" name="institution" id="institution" [ngModel]="obj?.institution" (ngModelChange)="obj.institution = $event" placeholder="Name of Institution" />
+                                                      </div>
+                                                      </div>
+                                                      <div class="col-12">
+                                                        <div class="form-row form-group">
+                                                          <label for="skillset" class="col-sm-2 col-form-label">Choose your skillset<i style='color: red;'>*</i></label>
+                                                          <input class="form-control col-sm-10" type="text" required #skill="ngModel" [class.is-invalid]="skill.invalid && skill.touched" name="skillset" id="skillset" [ngModel]="obj?.skillset" (ngModelChange)="obj.skillset = $event" placeholder="(Use ',' as a delimeter)" />
+                                                          <small class="col-sm-2"></small>
                                                           <small class="text-danger" [class.d-none]="skill.valid || skill.untouched">Skillset is required OR input NA</small>
                                                       </div>
-                                                        <div class="form-group">
-                                                          <label for="location">Location</label>
-                                                          <select class="custom-select" required #location="ngModel" [class.is-invalid]="location.invalid && location.touched" name="location" id="location" [ngModel]="obj?.location" (ngModelChange)="obj.location = $event">
+                                                      </div>
+                                                      <div class="col-12">
+                                                        <div class="form-row form-group">
+                                                          <label for="location" class="col-sm-2 col-form-label">Location<i style='color: red;'>*</i></label>
+                                                          <select class="custom-select col-sm-10" required #location="ngModel" [class.is-invalid]="location.invalid && location.touched" name="location" id="location" [ngModel]="obj?.location" (ngModelChange)="obj.location = $event">
                                                               <option value="">Choose</option>
                                                               <option>Gurgaon</option>
                                                               <option>New Delhi</option>
@@ -156,7 +181,9 @@
                                                               <option>Bangalore</option>
                                                               <option>Hyderabad</option>
                                                           </select>
+                                                          <small class="col-sm-2"></small>
                                                           <small class="text-danger" [class.d-none]="location.valid || location.untouched">Choose location of candidate</small>
+                                                        </div>
                                                         </div>
                                                     </fieldset>
                                                 </form>
@@ -175,7 +202,7 @@
                     </td>
                     <td>
                         <br>
-                        <a class="search-icon" data-toggle="modal" data-target="#deleteModal"> <i class="fas fa-trash-alt" style="font-size: 1.5em;"></i> </a>
+                        <a class="search-icon" data-toggle="modal" data-target="#deleteModal" style="background-color: #a32121;"> <i class="fas fa-trash-alt" style="font-size: 1.5em;"></i> </a>
                         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">

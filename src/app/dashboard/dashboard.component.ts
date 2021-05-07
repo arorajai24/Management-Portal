@@ -17,8 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(private logger : LogserviceService, private loginparser : LoginparserService, private router : Router, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.logger.log(this.name + " ("+this.email+") Signed In successfully.");
-    this.onSearch();
+    this.router.navigate(['search'] , {relativeTo : this.route});
   }
 
   onSignOut()

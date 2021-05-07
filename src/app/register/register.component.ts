@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LogserviceService } from '../logservice.service';
 import { User } from '../user';
 import { UserserviceService } from '../userservice.service';
@@ -14,17 +16,18 @@ export class RegisterComponent implements OnInit {
   user = new User(0,"","","",null,"","","","",this.dummy_date,"","","","");
   message : any;
 
-  constructor(private logger : LogserviceService, private service : UserserviceService) { }
+  constructor(@Inject(DOCUMENT) private document : Document, private router : Router, private logger : LogserviceService, private service : UserserviceService) { }
 
   ngOnInit(): void {
+    this.logger.log("Landed on register candidate page.")
   }
 
   public registerNow(){
     let reponse = this.service.doRegistration(this.user);
     reponse.subscribe(data => {
       this.message = data;
+      this.logger.log("User registered by name: "+ this.user.fname + " " + this.user.lname+".");
     });
-    this.logger.log("User registered by name: "+ this.user.fname + " " + this.user.lname+".");
   }
 
 }

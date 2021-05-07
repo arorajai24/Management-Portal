@@ -1,6 +1,8 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { UserserviceService } from '../userservice.service';
 
 import { RegisterComponent } from './register.component';
 
@@ -11,7 +13,7 @@ describe('RegisterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RegisterComponent ],
-      imports : [ HttpClientTestingModule, FormsModule ]
+      imports : [ HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]) ]
     })
     .compileComponents();
   });
@@ -26,16 +28,11 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it("testing function", ()=>{
-  //   expect(component.registerNow).toBe("propertyValue");
-  // })
 
-  // it("testing property", ()=>{
-  //   expect(component.propertyname).toBe("propertyValue");
-  // })
-
-  // it("testing htlm element", ()=>{
-  //   const data = fixture.nativeElement;
-  //   expect(data.querySelector(".classname").textContent).toContain("Value")
-  // })
+  it('Testing Injection',
+  inject([UserserviceService],(inj:UserserviceService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof UserserviceService).toBeTruthy();
+  }));
+  
 });

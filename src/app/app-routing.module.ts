@@ -32,6 +32,9 @@ const routes: Routes = [
         path : 'logs' , component : LogsComponent
       }
     ]
+  },
+  {
+    path : "**" , redirectTo : "" , pathMatch : "full"
   }
 ];
 

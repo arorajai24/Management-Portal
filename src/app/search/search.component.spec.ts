@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { LogserviceService } from '../logservice.service';
@@ -51,4 +51,15 @@ describe('SearchComponent', () => {
     expect(component.equals("One","Two")).toBe(false);
   })
   
+  it('should inject User service using inject function and check instance',
+  inject([UserserviceService],(inj:UserserviceService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof UserserviceService).toBeTruthy();
+  }));
+
+  it('should inject Logservice service using inject function and check instance',
+  inject([LogserviceService],(inj:LogserviceService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof LogserviceService).toBeTruthy();
+  }));
 });

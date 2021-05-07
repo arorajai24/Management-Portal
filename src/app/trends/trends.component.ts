@@ -24,8 +24,8 @@ export class TrendsComponent implements OnInit {
   chart = [
     { id : 1 , value : "Skillset Among Candidates"},
     { id : 2 , value : "Candidates joined each year"},
-    { id : 3 , value : "Joining Location of Candidates"},
-    { id : 4 , value : "Performance of Candidate"},
+    { id : 3 , value : "Location Analysis of Candidates"},
+    { id : 4 , value : "Performance Analysis of Candidates"},
     { id : 5 , value : "Role Diversity in Accolite"},
   ];
   openChart(id : number)
@@ -37,8 +37,8 @@ export class TrendsComponent implements OnInit {
       Object.keys(data).map(key=>this.parseData.push({name : key , value : data[key]}));
       console.log(this.parseData);
       this.parser=this.parseData;
-      });
-    this.logger.log("Display of chart : " + this.chart[id-1].value +" on Trends Component.");
-    this.temp = id;
+      this.logger.log("Display of chart : " + this.chart[id-1].value +" on Trends Component.");
+      this.temp = id;
+    });
   }
 }

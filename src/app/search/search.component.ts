@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
   constructor(private logger : LogserviceService, private route : ActivatedRoute, private service : UserserviceService, private router : Router, @Inject(DOCUMENT) private document : Document) { }
 
   ngOnInit(): void {
-    this.logger.log("Retrieved list of all candidates. (View All Component)");
+    this.logger.log("Retrieved list of all candidates. (Search Page)");
     let response = this.service.getAllUsers();
     response.subscribe(data => this.user = data);
   }
@@ -43,18 +43,19 @@ export class SearchComponent implements OnInit {
     {
       this.ngOnInit();
     }
-    this.logger.log("Searching database by '"+ this.searchVar +"'");
-    this.service.findBySearchVar(this.searchVar).subscribe(data => {this.user = data});
-    this.logger.log("Retrieved possible matches for '"+ this.searchVar +"'");
+    this.service.findBySearchVar(this.searchVar).subscribe(data => {
+      this.user = data
+      this.logger.log("Retrieved possible matches for '"+ this.searchVar +"'");
+    });
   }
   public removeUser(id)
   {
-    this.logger.log("Removing candidate with id : "+ id);
     let response = this.service.deleteUser(id);
-    response.subscribe(data => this.temp = data);
-    this.logger.log("Candidate with id : "+id+ " deleted successfully.");
-    this.logger.log("Refreshing...")
-    this.document.defaultView.location.reload();
+    response.subscribe(data => {
+      this.temp = data
+      this.logger.log("Candidate with id : "+id+ " deleted successfully.");
+      this.ngOnInit();
+    });
   }
 
   public viewById(id){
@@ -76,7 +77,7 @@ export class SearchComponent implements OnInit {
 
   public editNow(user_new)
   {
-    this.logger.log("Editing user in database with id : "+ user_new.id);
+    this.logger.log("Editing candidate '"+user_new.fname +" "+user_new.lname +"' by id : "+user_new.id+" in database.");
     let reponse = this.service.doEdit(user_new);
     reponse.subscribe(data => {
       this.message = data;

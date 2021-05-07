@@ -1,9 +1,10 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 'angularx-social-login';
 
 import { LoginparserService } from './loginparser.service';
+import { LogserviceService } from './logservice.service';
 import { SocialloginService } from './sociallogin.service';
 
 describe('LoginparserService', () => {
@@ -40,4 +41,17 @@ describe('LoginparserService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+  
+  it('should inject Social Login service using inject function and check instance',
+  inject([SocialloginService],(inj:SocialloginService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof SocialloginService).toBeTruthy();
+  }));
+
+  it('should inject logservice using inject function and check instance',
+  inject([LogserviceService],(inj:LogserviceService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof LogserviceService).toBeTruthy();
+  }));
+  
 });

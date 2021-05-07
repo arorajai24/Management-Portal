@@ -1,5 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 'angularx-social-login';
 import { LoginparserService } from '../loginparser.service';
@@ -44,4 +44,16 @@ describe('DashboardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Testing UserService Injection',
+  inject([LoginparserService],(inj:LoginparserService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof LoginparserService).toBeTruthy();
+  }));
+
+  it('Testing Logservice : should inject service using inject function and check instance',
+  inject([LogserviceService],(inj:LogserviceService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof LogserviceService).toBeTruthy();
+  }));
 });

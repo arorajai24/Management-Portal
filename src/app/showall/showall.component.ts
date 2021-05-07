@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LogserviceService } from '../logservice.service';
 import { User } from '../user';
 import { UserserviceService } from '../userservice.service';
@@ -15,21 +16,21 @@ export class ShowallComponent implements OnInit {
   obj : any;
   message : any;
 
-  constructor(private logger : LogserviceService, private service : UserserviceService, @Inject(DOCUMENT) private document : Document) { }
+  constructor(private router : Router, private logger : LogserviceService, private service : UserserviceService, @Inject(DOCUMENT) private document : Document) { }
 
   ngOnInit(): void {
-    this.logger.log("Retrieved list of all candidates. (View All Component)");
+    this.logger.log("Retrieved list of all candidates. (View All Page)");
     let response = this.service.getAllUsers();
     response.subscribe(data => this.user = data);
   }
 
   public removeUser(id : number){
-    this.logger.log("Removing candidate with id : "+ id);
     let response = this.service.deleteUser(id);
-    response.subscribe(data => this.message = data);
-    this.logger.log("Candidate with id : "+id+ " deleted successfully.");
-    this.logger.log("Refreshing...")
-    this.document.defaultView.location.reload();
+    response.subscribe(data =>{ 
+      this.message = data
+      this.logger.log("Candidate with id : "+id+ " deleted successfully.");
+      this.ngOnInit();
+    });
   }
 
   public viewById(id){

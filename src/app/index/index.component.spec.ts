@@ -1,8 +1,9 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 'angularx-social-login';
 import { LoginparserService } from '../loginparser.service';
+import { LogserviceService } from '../logservice.service';
 import { SocialloginService } from '../sociallogin.service';
 
 import { IndexComponent } from './index.component';
@@ -44,4 +45,10 @@ describe('IndexComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Testing Logservice Injection',
+  inject([LogserviceService],(inj:LogserviceService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof LogserviceService).toBeTruthy();
+  }));
 });

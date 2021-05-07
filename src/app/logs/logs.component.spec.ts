@@ -1,5 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { UserserviceService } from '../userservice.service';
 
 import { LogsComponent } from './logs.component';
@@ -26,4 +26,11 @@ describe('LogsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should inject service using inject function and check instance',
+  inject([UserserviceService],(inj:UserserviceService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof UserserviceService).toBeTruthy();
+  }));
+  
 });

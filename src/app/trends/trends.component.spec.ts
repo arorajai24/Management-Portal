@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { LogserviceService } from '../logservice.service';
+import { TrendserviceService } from '../trendservice.service';
 
 import { TrendsComponent } from './trends.component';
 
@@ -26,4 +27,17 @@ describe('TrendsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should inject Trendservice using inject function and check instance',
+  inject([TrendserviceService],(inj:TrendserviceService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof TrendserviceService).toBeTruthy();
+  }));
+
+  it('should inject logservice using inject function and check instance',
+  inject([LogserviceService],(inj:LogserviceService)=>{
+    expect(inj).toBeTruthy();
+    expect(inj instanceof LogserviceService).toBeTruthy();
+  }));
+
 });
